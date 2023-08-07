@@ -1,10 +1,11 @@
 import http from "k6/http";
 import { check, sleep } from "k6";
 import { FormData } from 'https://jslib.k6.io/formdata/0.0.2/index.js';
+import { uuidv4 } from 'https://jslib.k6.io/k6-utils/1.4.0/index.js';
 
 export const options = {
 	stages: [
-		{ duration: '1m', vus: 4000, target: 4000 }
+		{ duration: '1m', vus: 1000, target: 1000 }
 	]
 }
 
@@ -12,7 +13,7 @@ const url = "http://localhost:8080/api/rest/users/register"
 const image = open(`${__ENV.PWD}/profile.jpg`, 'b')
 
 export default function () {
-	const now = Date.now()
+	const now = `${Date.now()}${uuidv4()}`
 	const form = new FormData()
 	form.append(`name`, `user${now}`)
 	form.append(`email`, `useremail${now}@gmail.com`)

@@ -8,7 +8,7 @@ const userId = 'c9170dee-7abb-4fc3-8b50-26bcc8878188'
 
 export const options = {
 	stages: [
-		{ duration: '1m', vus: 4000, target: 4000 }
+		{ duration: '3m', vus: 1000, target: 1000 }
 	]
 }
 

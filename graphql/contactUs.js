@@ -5,7 +5,7 @@ const url = "http://localhost:8080/api/gql/graphql"
 
 export const options = {
 	stages: [
-		{ duration: '1m', vus: 4000, target: 4000 }
+		{ duration: '3m', vus: 1000, target: 1000 }
 	]
 }
 

@@ -7,7 +7,7 @@ const trashTypeId = 'ad2f2515-597e-404b-bb78-2c143003467b'
 
 export const options = {
 	stages: [
-		{ duration: '1m', vus: 4000, target: 4000 }
+		{ duration: '3m', vus: 1000, target: 1000 }
 	]
 }
 
