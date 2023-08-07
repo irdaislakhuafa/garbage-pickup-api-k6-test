@@ -16,7 +16,7 @@ export default function () {
 
 	const res = http.post(url, body, { headers: headers })
 	check(res, {
-		"is ok": (r) => r.status === 200
+		"login success": (r) => r.status === 200
 	})
 	console.log(res.body)
 }

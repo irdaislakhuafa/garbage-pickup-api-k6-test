@@ -31,7 +31,7 @@ export default function () {
 	})
 
 	check(res, {
-		"is ok": (res) => res.status === 200
+		"register success": (res) => res.status === 200
 	})
 
 	sleep(1)
