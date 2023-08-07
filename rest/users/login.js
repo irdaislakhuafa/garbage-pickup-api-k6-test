@@ -18,5 +18,5 @@ export default function () {
 	check(res, {
 		"login success": (r) => r.status === 200
 	})
-	console.log(res.body)
+	console.log(host)
 }
