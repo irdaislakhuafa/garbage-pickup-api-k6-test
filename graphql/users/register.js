@@ -8,7 +8,7 @@ const image = open(`${__ENV.PWD}/profile.jpg`, 'b')
 
 export default function () {
 	const now = Date.now()
-	const query = `
+	const mutation = `
 		mutation ($image: Upload!) {
 			user {
 				register(request: {
@@ -31,7 +31,7 @@ export default function () {
 	}
 
 	const form = new FormData()
-	form.append("operations", JSON.stringify({ query, variables }))
+	form.append("operations", JSON.stringify({ query: mutation, variables }))
 	form.append("map", JSON.stringify({ "0": ["variables.image"] }))
 	form.append("0", http.file(image, "image.jpg"))
 
