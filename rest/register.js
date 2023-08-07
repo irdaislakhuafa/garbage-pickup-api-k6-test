@@ -4,7 +4,7 @@ import { FormData } from 'https://jslib.k6.io/formdata/0.0.2/index.js';
 
 export const options = {
 	stages: [
-		{ duration: "1s", target: 1 }
+		{ duration: '1m', vus: 4000, target: 4000 }
 	]
 }
 
@@ -33,6 +33,5 @@ export default function () {
 	check(res, {
 		"register success": (res) => res.status === 200
 	})
-
 	sleep(1)
 }

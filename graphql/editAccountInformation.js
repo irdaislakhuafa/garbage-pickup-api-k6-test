@@ -6,6 +6,12 @@ import { FormData } from 'https://jslib.k6.io/formdata/0.0.2/index.js';
 const url = "http://localhost:8080/api/gql/graphql"
 const userId = '86ebd8d8-396e-43f8-a84b-7622720554df'
 
+export const options = {
+	stages: [
+		{ duration: '1m', vus: 4000, target: 4000 }
+	]
+}
+
 export default function () {
 	const query = `
 		query {
@@ -44,4 +50,5 @@ export default function () {
 	check(res, {
 		"edit user account is success": (r) => JSON.parse(r.body).errors == null
 	})
+	sleep(1)
 };
