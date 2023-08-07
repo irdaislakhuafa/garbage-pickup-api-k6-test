@@ -33,4 +33,5 @@ export default function () {
 	check(res, {
 		"get garbage pickup history success": (r) => JSON.parse(r.body).errors == null
 	})
+	sleep(1)
 };

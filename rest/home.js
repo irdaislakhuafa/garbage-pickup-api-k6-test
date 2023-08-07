@@ -30,4 +30,5 @@ export default function () {
 	check(listPickupUser, {
 		"get list pickup user success": (r) => r.status === 200,
 	})
+	sleep(1)
 }

@@ -50,4 +50,5 @@ export default function () {
 	check(res, {
 		"edit user account is success": (r) => JSON.parse(r.body).errors == null
 	})
+	sleep(1)
 };

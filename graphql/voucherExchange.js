@@ -34,4 +34,5 @@ export default function () {
 	check(res, {
 		"get all data for page success": (r) => JSON.parse(r.body).errors == null,
 	})
+	sleep(1)
 };

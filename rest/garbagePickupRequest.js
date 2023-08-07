@@ -45,4 +45,5 @@ export default function () {
 	check(responseExchange, {
 		"exchange voucher success": (r) => r.status === 200,
 	})
+	sleep(1)
 };

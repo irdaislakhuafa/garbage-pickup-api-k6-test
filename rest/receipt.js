@@ -16,4 +16,5 @@ export default function () {
 	check(res, {
 		"get receipt success": (r) => r.status === 200,
 	})
+	sleep(1)
 };

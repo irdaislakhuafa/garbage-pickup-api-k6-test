@@ -36,4 +36,5 @@ export default function () {
 	check(res, {
 		"login success": (r) => JSON.parse(r.body).errors == null,
 	})
+	sleep(1)
 };

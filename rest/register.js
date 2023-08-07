@@ -33,6 +33,5 @@ export default function () {
 	check(res, {
 		"register success": (res) => res.status === 200
 	})
-
 	sleep(1)
 }

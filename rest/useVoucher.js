@@ -46,4 +46,5 @@ export default function () {
 			"exchange voucher success": (r) => r.status === 200,
 		})
 	}
+	sleep(1)
 };

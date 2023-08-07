@@ -61,4 +61,5 @@ export default function () {
 	check(res, {
 		"save pickup request is sucess": (r) => JSON.parse(r.body).errors == null,
 	})
+	sleep(1)
 };

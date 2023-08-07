@@ -42,4 +42,5 @@ export default function () {
 	check(resEditUser, {
 		"edit user success": (r) => r.status == 200,
 	})
+	sleep(1)
 };
