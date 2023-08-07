@@ -4,7 +4,7 @@ import { check, group, sleep } from 'k6';
 
 const url = "http://localhost:8080/api/gql/graphql"
 const userId = 'c9170dee-7abb-4fc3-8b50-26bcc8878188'
-const pickupId = '919a3966-b217-46bd-afd7-4f5e00c2853d'
+const pickupId = '4445adc4-7082-4b75-af99-62789d8f7df1'
 
 export const options = {
 	stages: [
