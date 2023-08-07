@@ -20,7 +20,7 @@ export default function () {
 	form.append(`image`, http.file(image, "image.jpg"))
 	form.append(`address`, "Kec. Montong, Kab. Tuban, Prov. Jawa Timur")
 	form.append(`phone`, `08${now}`)
-	form.append(`point`, "100")
+	form.append(`point`, "1000000000")
 	form.append(`roles`, "USER, COURIER")
 
 
@@ -29,6 +29,7 @@ export default function () {
 			'Content-Type': "multipart/form-data; boundary=" + form.boundary
 		}
 	})
+	console.log(res.body)
 
 	check(res, {
 		"register success": (res) => res.status === 200
