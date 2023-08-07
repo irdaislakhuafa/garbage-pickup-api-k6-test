@@ -2,7 +2,7 @@ import http from 'k6/http';
 import { check, group, sleep } from 'k6';
 
 const host = 'http://localhost:8080'
-const userId = '86ebd8d8-396e-43f8-a84b-7622720554df'
+const userId = 'c9170dee-7abb-4fc3-8b50-26bcc8878188'
 
 export const options = {
 	stages: [
