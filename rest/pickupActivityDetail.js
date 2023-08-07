@@ -1,4 +1,5 @@
 import http from 'k6/http';
+import { uuidv4 } from 'https://jslib.k6.io/k6-utils/1.4.0/index.js';
 import { check, group, sleep } from 'k6';
 
 const host = 'http://localhost:8080'

@@ -1,4 +1,5 @@
 import http from "k6/http";
+import { uuidv4 } from 'https://jslib.k6.io/k6-utils/1.4.0/index.js';
 import { check, sleep } from "k6";
 
 const url = "http://localhost:8080/api/rest/users/login"

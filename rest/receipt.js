@@ -1,4 +1,5 @@
 import http from 'k6/http';
+import { uuidv4 } from 'https://jslib.k6.io/k6-utils/1.4.0/index.js';
 import { check, group, sleep } from 'k6';
 
 const pickupId = `81bf0ee1-85a4-4883-9f4f-5c7923b390b8`
