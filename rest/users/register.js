@@ -29,7 +29,6 @@ export default function () {
 			'Content-Type': "multipart/form-data; boundary=" + form.boundary
 		}
 	})
-	console.log(res.body)
 
 	check(res, {
 		"register success": (res) => res.status === 200
