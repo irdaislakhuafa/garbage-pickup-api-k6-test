@@ -8,7 +8,7 @@ const image = open(`${__ENV.PWD}/profile.jpg`, 'b')
 
 export const options = {
 	stages: [
-		{ duration: '3m', vus: 1000, target: 1000 }
+		{ duration: '1m', vus: 1000, target: 1000 }
 	]
 }
 
