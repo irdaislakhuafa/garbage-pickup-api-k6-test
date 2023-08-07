@@ -6,6 +6,12 @@ import { FormData } from 'https://jslib.k6.io/formdata/0.0.2/index.js';
 const url = "http://localhost:8080/api/gql/graphql"
 const image = open(`${__ENV.PWD}/profile.jpg`, 'b')
 
+export const options = {
+	stages: [
+		{ duration: '1m', vus: 4000, target: 4000 }
+	]
+}
+
 export default function () {
 	const now = Date.now()
 	const mutation = `

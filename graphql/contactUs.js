@@ -3,6 +3,13 @@ import { check, group, sleep } from 'k6';
 
 const url = "http://localhost:8080/api/gql/graphql"
 
+export const options = {
+	stages: [
+		{ duration: '1m', vus: 4000, target: 4000 }
+	]
+}
+
+
 export default function () {
 	const query = `
 		query {
@@ -13,7 +20,7 @@ export default function () {
 	`
 	const body = JSON.stringify({ query: query })
 	let headers = {
-		'Content-Type': 'multipart/json'
+		'Content-Type': 'application/json'
 	}
 	const res = http.post(url, body, { headers: headers })
 	check(res, {

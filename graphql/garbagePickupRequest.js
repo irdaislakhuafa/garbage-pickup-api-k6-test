@@ -5,6 +5,11 @@ const url = "http://localhost:8080/api/gql/graphql"
 const userId = '86ebd8d8-396e-43f8-a84b-7622720554df'
 const trashTypeId = 'ad2f2515-597e-404b-bb78-2c143003467b'
 
+export const options = {
+	stages: [
+		{ duration: '1m', vus: 4000, target: 4000 }
+	]
+}
 
 export default function () {
 	const query = `
