@@ -34,5 +34,5 @@ export default function () {
 		"is ok": (res) => res.status === 200
 	})
 
-	console.log(res.body)
+	sleep(1)
 }
