@@ -14,7 +14,13 @@ export const options = {
 export default function () {
 	const user = http.get(`${host}/api/rest/users/${userId}`)
 	check(user, {
-		"get user success": (r) => r.status == 200,
+		"get user success": (r) => {
+			const isOk = (r.status == 200)
+			if (!isOk) {
+				console.log(r.body)
+			}
+			return isOk
+		},
 	})
 
 	let headers = {
@@ -29,7 +35,13 @@ export default function () {
 
 	const listPickupUser = http.post(`${host}/api/rest/pickups/users`, body, { headers: headers })
 	check(listPickupUser, {
-		"get list pickup user success": (r) => r.status === 200,
+		"get list pickup user success": (r) => {
+			const isOk = (r.status == 200)
+			if (!isOk) {
+				console.log(r.body)
+			}
+			return isOk
+		},
 	})
 	sleep(1)
 }
