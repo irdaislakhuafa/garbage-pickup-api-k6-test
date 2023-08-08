@@ -38,7 +38,7 @@ export default function () {
 	}
 
 	let listUserVouchers = http.post(url, body, { headers: headers })
-	check(listTrashTypes, {
+	check(listUserVouchers, {
 		"get list user voucher success": (r) => {
 			const isOk = (r.status === 200)
 			if (!isOk) {
@@ -48,7 +48,7 @@ export default function () {
 		},
 	})
 
-	listUserVouchers = JSON.parse(listTrashTypes.body)
+	listUserVouchers = JSON.parse(listUserVouchers.body)
 	url = `${host}/api/rest/userVouchers/exchange`
 	body = JSON.stringify({
 		userId: `${userId}`,
