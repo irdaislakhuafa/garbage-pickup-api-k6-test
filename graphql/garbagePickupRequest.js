@@ -3,7 +3,7 @@ import { uuidv4 } from 'https://jslib.k6.io/k6-utils/1.4.0/index.js';
 import { check, group, sleep } from 'k6';
 
 const url = "http://localhost:8080/api/gql/graphql"
-const userId = 'c9170dee-7abb-4fc3-8b50-26bcc8878188'
+const userId = '3439fa4d-847b-42c5-aaec-82beb452578c'
 const trashTypeId = 'ad2f2515-597e-404b-bb78-2c143003467b'
 
 export const options = {

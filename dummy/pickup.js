@@ -9,7 +9,7 @@ export const options = {
 }
 
 const url = "http://localhost:8080/api/gql/graphql"
-const userId = 'c9170dee-7abb-4fc3-8b50-26bcc8878188'
+const userId = '3439fa4d-847b-42c5-aaec-82beb452578c'
 const trashTypeId = 'db62ce8a-d56e-4c75-8410-41f750e5542f'
 
 export default function () {

@@ -2,7 +2,7 @@ import http from 'k6/http';
 import { check, group, sleep } from 'k6';
 
 const url = "http://localhost:8080/api/gql/graphql"
-const userId = 'c9170dee-7abb-4fc3-8b50-26bcc8878188'
+const userId = '3439fa4d-847b-42c5-aaec-82beb452578c'
 const pickupId = '86c1b9eb-2727-49f9-a459-f468102284d4'
 
 export const options = {

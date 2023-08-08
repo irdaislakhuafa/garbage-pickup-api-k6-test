@@ -5,7 +5,7 @@ import { FormData } from 'https://jslib.k6.io/formdata/0.0.2/index.js';
 
 
 const url = "http://localhost:8080/api/gql/graphql"
-const userId = 'c9170dee-7abb-4fc3-8b50-26bcc8878188'
+const userId = '3439fa4d-847b-42c5-aaec-82beb452578c'
 
 export const options = {
 	stages: [
