@@ -5,7 +5,7 @@ import { uuidv4 } from 'https://jslib.k6.io/k6-utils/1.4.0/index.js';
 
 export const options = {
 	stages: [
-		{ duration: '1m', vus: 1000, target: 1000 }
+		{ duration: '1m', vus: 500, target: 500 }
 	]
 }
 
@@ -27,12 +27,18 @@ export default function () {
 
 	let res = http.post(url, form.body(), {
 		headers: {
-			'Content-Type': "multipart/form-data; boundary=" + form.boundary
+			'Content-Type': `multipart/form-data; boundary=${form.boundary}`
 		}
 	})
 
 	check(res, {
-		"register success": (res) => res.status === 200
+		"register success": (res) => {
+			const isOk = (res.status === 200)
+			if (!isOk) {
+				console.log(res.body)
+			}
+			return isOk
+		}
 	})
 	sleep(1)
 }

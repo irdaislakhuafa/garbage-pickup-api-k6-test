@@ -9,12 +9,12 @@ const image = open(`${__ENV.PWD}/profile.jpg`, 'b')
 
 export const options = {
 	stages: [
-		{ duration: '1m', vus: 1000, target: 1000 }
+		{ duration: '1m', vus: 500, target: 500 }
 	]
 }
 
 export default function () {
-	const now = Date.now()
+	const now = `${Date.now()}${uuidv4()}`
 	const mutation = `
 		mutation ($image: Upload!) {
 			user {
@@ -50,7 +50,12 @@ export default function () {
 	check(res, {
 		"register success": (r) => {
 			const body = JSON.parse(r.body)
-			return body.errors == null
+			let isTrue = (body.errors == null)
+			if (isTrue) {
+				return isTrue
+			}
+			console.log(body.errors)
+			return isTrue
 		},
 	})
 	sleep(1)

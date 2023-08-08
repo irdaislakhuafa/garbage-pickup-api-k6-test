@@ -7,7 +7,7 @@ const pickupId = '86c1b9eb-2727-49f9-a459-f468102284d4';
 
 export const options = {
 	stages: [
-		{ duration: '1m', vus: 1000, target: 1000 }
+		{ duration: '1m', vus: 500, target: 500 }
 	]
 }
 

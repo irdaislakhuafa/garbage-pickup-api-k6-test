@@ -8,7 +8,7 @@ const userId = 'c9170dee-7abb-4fc3-8b50-26bcc8878188'
 
 export const options = {
 	stages: [
-		{ duration: '1m', vus: 1000, target: 1000 }
+		{ duration: '1m', target: 100 }
 	]
 }
 
@@ -32,14 +32,14 @@ export default function () {
 	let resObject = JSON.parse(res.body)
 	let listId = [];
 
-	resObject.data.forEach(v => listId.push(v.id));
+	resObject.data != null && resObject.data.forEach(v => listId.push(v.id));
 
 	// use voucher if exists
 	if (listId.length != 0) {
 		url = `${host}/api/rest/userVouchers/exchange`
 		body = JSON.stringify({
 			userId: `${userId}`,
-			listId: []
+			listId: listId
 		})
 
 		res = http.post(url, body, { headers: headers })

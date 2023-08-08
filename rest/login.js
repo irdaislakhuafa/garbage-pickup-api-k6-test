@@ -6,7 +6,7 @@ const url = "http://localhost:8080/api/rest/users/login"
 
 export const options = {
 	stages: [
-		{ duration: '1m', vus: 1000, target: 1000 }
+		{ duration: '1m', vus: 500, target: 500 }
 	]
 }
 
