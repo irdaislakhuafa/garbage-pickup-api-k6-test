@@ -10,7 +10,7 @@ export const options = {
 
 const url = "http://localhost:8080/api/gql/graphql"
 const userId = '3439fa4d-847b-42c5-aaec-82beb452578c'
-const trashTypeId = 'db62ce8a-d56e-4c75-8410-41f750e5542f'
+const trashTypeId = '3b0b0118-5ed8-4823-bceb-caab5f1f8f9c'
 
 export default function () {
 	const now = `${Date.now()}${uuidv4()}`

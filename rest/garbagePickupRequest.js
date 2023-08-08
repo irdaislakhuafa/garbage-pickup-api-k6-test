@@ -4,7 +4,7 @@ import { check, group, sleep } from 'k6';
 
 const host = 'http://localhost:8080'
 const userId = '3439fa4d-847b-42c5-aaec-82beb452578c'
-const trashTypeId = 'c4d4f33c-f320-4493-9f19-23d7e9f2d753'
+const trashTypeId = '3b0b0118-5ed8-4823-bceb-caab5f1f8f9c'
 
 export const options = {
 	stages: [
