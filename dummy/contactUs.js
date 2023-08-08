@@ -5,22 +5,23 @@ import { check, group, sleep } from 'k6';
 const url = 'http://localhost:8080/api/gql/graphql'
 const image = open(`${__ENV.PWD}/profile.jpg`, 'b')
 
+export const options = {
+	stages: [
+		{ duration: '30s', target: 100 }
+	]
+}
 
 export default function () {
 	const now = Date.now()
 	const mutation = `
 		mutation ($image: Upload!){
-			voucher {
+			contactUs {
 				save(request: {
-					title: "voucher ${now}"
+					title: "contact us ${now}"
+					value: "${now}"
 					description: "description ${now}"
 					image: $image
-					pointsNeeded: 1
-					type: PERCENT
-					value: 1
-				}) {
-					id
-				}
+				}) { id }
 			}
 		}
 	`
@@ -41,6 +42,13 @@ export default function () {
 	})
 
 	check(res, {
-		"ok": r => JSON.parse(r.body).errors == null
+		"ok": r => {
+			const body = JSON.parse(r.body)
+			const isOk = (body.errors == null)
+			if (!isOk) {
+				console.log(body)
+			}
+			return isOk
+		}
 	})
 };

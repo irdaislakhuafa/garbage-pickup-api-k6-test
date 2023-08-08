@@ -4,6 +4,7 @@ import { check, group, sleep } from 'k6';
 
 const host = 'http://localhost:8080'
 const userId = '3439fa4d-847b-42c5-aaec-82beb452578c'
+const trashTypeId = 'c4d4f33c-f320-4493-9f19-23d7e9f2d753'
 
 export const options = {
 	stages: [
@@ -16,7 +17,13 @@ export default function () {
 	let url = `${host}/api/rest/trashTypes`
 	let listTrashTypes = http.get(url)
 	check(listTrashTypes, {
-		"get list trast type succes": (r) => true,
+		"get list trast type succes": (r) => {
+			const isOk = (r.status === 200)
+			if (!isOk) {
+				console.log(r.body)
+			}
+			return isOk
+		},
 	})
 
 	// get claimed vouchers
@@ -32,7 +39,13 @@ export default function () {
 
 	let listUserVouchers = http.post(url, body, { headers: headers })
 	check(listTrashTypes, {
-		"get list user voucher success": (r) => true,
+		"get list user voucher success": (r) => {
+			const isOk = (r.status === 200)
+			if (!isOk) {
+				console.log(r.body)
+			}
+			return isOk
+		},
 	})
 
 	listUserVouchers = JSON.parse(listTrashTypes.body)
@@ -44,7 +57,13 @@ export default function () {
 
 	let responseExchange = http.post(url, body, { headers: headers })
 	check(responseExchange, {
-		"exchange voucher success": (r) => true,
+		"exchange voucher success": (r) => {
+			const isOk = (r.status === 200)
+			if (!isOk) {
+				console.log(r.body)
+			}
+			return isOk
+		},
 	})
 	sleep(1)
 };
