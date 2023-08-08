@@ -2,7 +2,7 @@ import http from 'k6/http';
 import { uuidv4 } from 'https://jslib.k6.io/k6-utils/1.4.0/index.js';
 import { check, group, sleep } from 'k6';
 
-const pickupId = `86c1b9eb-2727-49f9-a459-f468102284d4`
+const pickupId = `23b26b34-31a7-452a-8600-1663bdabdf8b`
 const host = 'http://localhost:8080';
 
 export const options = {

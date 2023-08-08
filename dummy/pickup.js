@@ -38,6 +38,14 @@ export default function () {
 
 	const body = JSON.stringify({ query: mutation })
 	const res = http.post(url, body, { headers: headers })
-	check(res, { "is ok": r => JSON.parse(r.body).errors == null })
-	console.log(res.body)
+	check(res, {
+		"is ok": r => {
+			const body = JSON.parse(r.body)
+			const isOk = (body.errors == null)
+			if (!isOk) {
+				console.log(body.errors)
+			}
+			return isOk
+		}
+	})
 };
