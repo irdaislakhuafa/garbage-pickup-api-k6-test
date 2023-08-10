@@ -2,15 +2,11 @@ import http from 'k6/http';
 import { uuidv4 } from 'https://jslib.k6.io/k6-utils/1.4.0/index.js';
 import { check, group, sleep } from 'k6';
 
-const url = "http://localhost:8080/api/gql/graphql"
-const userId = '3439fa4d-847b-42c5-aaec-82beb452578c'
-const pickupId = '23b26b34-31a7-452a-8600-1663bdabdf8b'
+const env = JSON.parse(__ENV.OPTS)
+const url = `${env.api.host + env.api.basePath.graphql}`
+const pickupId = env.variables.pickup.id
 
-export const options = {
-	stages: [
-		{ duration: '1m', vus: 500, target: 500 }
-	]
-}
+export const options = function () { return env.options }()
 
 export default function () {
 	const query = `
@@ -31,7 +27,14 @@ export default function () {
 	const body = JSON.stringify({ query: query })
 	const res = http.post(url, body, { headers: headers })
 	check(res, {
-		"get all data for page is success": (r) => JSON.parse(r.body).errors == null,
+		"get all data for page is success": (r) => {
+			const body = JSON.parse(r.body)
+			const isOk = (body.errors == null)
+			if (!isOk) {
+				console.log(body.errors)
+			}
+			return isOk
+		},
 	})
 	sleep(1)
 };

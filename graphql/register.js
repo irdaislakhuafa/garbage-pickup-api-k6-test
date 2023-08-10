@@ -4,14 +4,12 @@ import { check, group, sleep } from 'k6';
 import { FormData } from 'https://jslib.k6.io/formdata/0.0.2/index.js';
 
 
-const url = "http://localhost:8080/api/gql/graphql"
-const image = open(`${__ENV.PWD}/profile.jpg`, 'b')
+const env = JSON.parse(__ENV.OPTS)
+const url = `${env.api.host + env.api.basePath.graphql}`
+const image = open(`${__ENV.PWD}/${env.variables.image}`, 'b')
 
-export const options = {
-	stages: [
-		{ duration: '1m', vus: 500, target: 500 }
-	]
-}
+export const options = function () { return env.options }()
+
 
 export default function () {
 	const now = `${Date.now()}${uuidv4()}`
@@ -51,10 +49,9 @@ export default function () {
 		"register success": (r) => {
 			const body = JSON.parse(r.body)
 			let isTrue = (body.errors == null)
-			if (isTrue) {
-				return isTrue
+			if (!isTrue) {
+				console.log(body.errors)
 			}
-			console.log(body.errors)
 			return isTrue
 		},
 	})

@@ -2,13 +2,10 @@ import http from 'k6/http';
 import { uuidv4 } from 'https://jslib.k6.io/k6-utils/1.4.0/index.js';
 import { check, group, sleep } from 'k6';
 
-const url = "http://localhost:8080/api/gql/graphql"
+const env = JSON.parse(__ENV.OPTS)
+const url = `${env.api.host + env.api.basePath.graphql}`
 
-export const options = {
-	stages: [
-		{ duration: '1m', vus: 500, target: 500 }
-	]
-}
+export const options = function () { return env.options }()
 
 export default function () {
 	const mutation = `
@@ -16,10 +13,10 @@ export default function () {
 			user {
 				login(
 					request: {
-						email: "exampleuser@gmail.com"
-						password: "exampleuser"
-						lat: 150
-						lng: 150
+						email: "${env.variables.user.email}"
+						password: "${env.variables.user.password}"
+						lat: ${env.variables.user.lat}
+						lng: ${env.variables.user.lng}
 					}
 					) {
 						token
@@ -35,7 +32,15 @@ export default function () {
 	const body = JSON.stringify({ query: mutation })
 	let res = http.post(url, body, { headers: headers })
 	check(res, {
-		"login success": (r) => JSON.parse(r.body).errors == null,
+		"login success": (r) => {
+			const body = JSON.parse(r.body)
+			const isOk = (body.errors == null)
+			if (!isOk) {
+				console.log(body.errors)
+			}
+			return isOk
+		},
 	})
+
 	sleep(1)
 };

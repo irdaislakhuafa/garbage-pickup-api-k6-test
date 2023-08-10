@@ -27,7 +27,7 @@ export default function () {
 	url = `${host}/api/rest/userVouchers/vouchers`
 	let body = JSON.stringify({
 		userId: `${userId}`,
-		statuses: []
+		statuses: ["AVAILABLE"]
 	})
 
 	res = http.post(url, body, { headers: headers })

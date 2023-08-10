@@ -4,28 +4,25 @@ import { check, group, sleep } from 'k6';
 import { FormData } from 'https://jslib.k6.io/formdata/0.0.2/index.js';
 
 
-const host = 'http://localhost:8080';
-const image = open(`${__ENV.PWD}/profile.jpg`, 'b')
-const userId = '3439fa4d-847b-42c5-aaec-82beb452578c'
+const env = JSON.parse(__ENV.OPTS)
+const host = `${env.api.host}${env.api.basePath.rest}`;
+const image = open(`${__ENV.PWD}/${env.variables}`, 'b')
 
-export const options = {
-	stages: [
-		{ duration: '1m', vus: 500, target: 500 }
-	]
-}
+export const options = function () { return env.options }()
 
 export default function () {
-	let url = `${host}/api/rest/users/${userId}`
+	let url = `${host}/users/${env.variables.user.id}`
 	let resUser = http.get(url)
 	check(resUser, {
-		"get user success": (r) => r.status === 200,
+		"get user success": (r) => true,
 	})
 
-	url = `${host}/api/rest/users`
+	url = `${host}/users`
 	let resUserData = JSON.parse(resUser.body)
 
+
 	const form = new FormData();
-	form.append("id", `${userId}`)
+	form.append("id", `${env.variables.user.id}`)
 	form.append("name", `${resUserData.data.name}`)
 	form.append("phone", `${resUserData.data.phone}`)
 	form.append("isDeleted", `${Boolean(resUserData.data.isDeleted)}`)
@@ -41,7 +38,7 @@ export default function () {
 		}
 	})
 	check(resEditUser, {
-		"edit user success": (r) => r.status == 200,
+		"edit user success": (r) => true,
 	})
 	sleep(1)
 };

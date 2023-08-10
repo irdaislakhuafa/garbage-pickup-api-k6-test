@@ -1,0 +1,44 @@
+{
+	"options": {
+		"stages": [
+			{
+				"duration": "5m",
+				"vus": 10,
+				"target": 10
+			},
+			{
+				"duration": "5m",
+				"vus": 50,
+				"target": 50
+			},
+			{
+				"duration": "5m",
+				"vus": 100,
+				"target": 100
+			}
+		]
+	},
+	"api": {
+		"host": "http://10.10.164.40:8080",
+		"basePath": {
+			"graphql": "/api/gql/graphql",
+			"rest": "/api/rest"
+		}
+	},
+	"variables": {
+		"user": {
+			"id": "3439fa4d-847b-42c5-aaec-82beb452578c",
+			"email": "useremail1691519773129d5ea6007-c12c-4bbc-abb0-124b514e97a1@gmail.com",
+			"password": "user1691519773129d5ea6007-c12c-4bbc-abb0-124b514e97a1",
+			"lat": 10.5,
+			"lng": -10.5
+		},
+		"pickup": {
+			"id": "23b26b34-31a7-452a-8600-1663bdabdf8b"
+		},
+		"trashType": {
+			"id": "3b0b0118-5ed8-4823-bceb-caab5f1f8f9c"
+		},
+		"image": "profile.jpg"
+	}
+}

@@ -4,14 +4,11 @@ import { check, group, sleep } from 'k6';
 import { FormData } from 'https://jslib.k6.io/formdata/0.0.2/index.js';
 
 
-const url = "http://localhost:8080/api/gql/graphql"
-const userId = '3439fa4d-847b-42c5-aaec-82beb452578c'
+const env = JSON.parse(__ENV.OPTS)
+const url = `${env.api.host + env.api.basePath.graphql}`
+const userId = env.variables.user.id
 
-export const options = {
-	stages: [
-		{ duration: '1m', vus: 500, target: 500 }
-	]
-}
+export const options = function () { return env.options }()
 
 export default function () {
 	const query = `
@@ -29,7 +26,14 @@ export default function () {
 	}
 	let res = http.post(url, body, { headers: headers })
 	check(res, {
-		"get user is success": (r) => JSON.parse(r.body).errors == null
+		"get user is success": (r) => (r) => {
+			const body = JSON.parse(r.body)
+			const isOk = (body.errors == null)
+			if (!isOk) {
+				console.log(r.body)
+			}
+			return isOk
+		}
 	})
 
 	const now = Date.now()
@@ -49,7 +53,14 @@ export default function () {
 	}
 	res = http.post(url, form.body(), { headers: headers })
 	check(res, {
-		"edit user account is success": (r) => JSON.parse(r.body).errors == null
+		"edit user account is success": (r) => {
+			const body = JSON.parse(r.body)
+			const isOk = (body.errors == null)
+			if (!isOk) {
+				console.log(r.body)
+			}
+			return isOk
+		}
 	})
 	sleep(1)
 };
