@@ -33,5 +33,5 @@ export default function () {
 			return isTrue
 		}
 	})
-	sleep(1)
+	sleep(Number(env.runner.sleep))
 };

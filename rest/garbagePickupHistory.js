@@ -29,5 +29,5 @@ export default function () {
 	check(res, {
 		"get list activity history success": (r) => r.status === 200,
 	})
-	sleep(1)
+	sleep(Number(env.runner.sleep))
 };

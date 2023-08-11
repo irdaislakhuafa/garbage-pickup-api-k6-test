@@ -19,7 +19,7 @@
 		]
 	},
 	"api": {
-		"host": "http://10.10.164.40:8080",
+		"host": "http://localhost:8080",
 		"basePath": {
 			"graphql": "/api/gql/graphql",
 			"rest": "/api/rest"
@@ -40,5 +40,8 @@
 			"id": "3b0b0118-5ed8-4823-bceb-caab5f1f8f9c"
 		},
 		"image": "profile.jpg"
+	},
+	"runner": {
+		"sleep": 1
 	}
 }

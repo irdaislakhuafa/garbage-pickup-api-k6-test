@@ -34,5 +34,5 @@ export default function () {
 	check(res, {
 		"get available user voucher success": (r) => r.status === 200,
 	})
-	sleep(1)
+	sleep(Number(env.runner.sleep))
 };

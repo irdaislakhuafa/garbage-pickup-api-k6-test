@@ -61,5 +61,5 @@ export default function () {
 			return true
 		},
 	})
-	sleep(1)
+	sleep(Number(env.runner.sleep))
 };

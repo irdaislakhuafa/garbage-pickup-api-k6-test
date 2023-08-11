@@ -42,5 +42,5 @@ export default function () {
 		},
 	})
 
-	sleep(1)
+	sleep(Number(env.runner.sleep))
 };

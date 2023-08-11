@@ -18,5 +18,5 @@ export default function () {
 		"get receipt success": (r) => true,
 	})
 
-	sleep(1)
+	sleep(Number(env.runner.sleep))
 };

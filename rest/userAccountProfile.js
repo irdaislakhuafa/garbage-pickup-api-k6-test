@@ -18,5 +18,5 @@ export default function () {
 	check(resUser, {
 		"get user success": (r) => r.status === 200,
 	})
-	sleep(1)
+	sleep(Number(env.runner.sleep))
 };

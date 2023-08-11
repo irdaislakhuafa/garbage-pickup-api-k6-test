@@ -47,5 +47,5 @@ export default function () {
 			"exchange voucher success": (r) => true,
 		})
 	}
-	sleep(1)
+	sleep(Number(env.runner.sleep))
 };

@@ -47,5 +47,5 @@ export default function () {
 	check(res, {
 		"is ok": r => JSON.parse(r.body).errors == null
 	})
-	sleep(1)
+	sleep(Number(env.runner.sleep))
 };

@@ -17,5 +17,5 @@ export default function () {
 	check(res, {
 		"get detail pickup success": (r) => true,
 	})
-	sleep(1)
+	sleep(Number(env.runner.sleep))
 };
