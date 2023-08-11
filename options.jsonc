@@ -8,13 +8,13 @@
 			},
 			{
 				"duration": "5m",
-				"vus": 50,
-				"target": 50
+				"vus": 25,
+				"target": 25
 			},
 			{
 				"duration": "5m",
-				"vus": 100,
-				"target": 100
+				"vus": 50,
+				"target": 50
 			}
 		]
 	},
